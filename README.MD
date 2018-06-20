@@ -10,7 +10,7 @@ docker-compose up
 
 docker-compose exec putineer_web_1 ./manage.py migrate
 
-cd src/static/poutineer && npm run build && docker exec putineer-docker_web_1 ./manage.py collectstatic --noinput
+cd src/static/poutineer && npm install && npm run build && docker exec putineer-docker_web_1 ./manage.py collectstatic --noinput
 ```
 
 # Manually scraping Yelp
