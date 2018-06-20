@@ -139,4 +139,8 @@ export default {
 .restaurant-thumbnail {
   margin-bottom: 0.5rem;
 }
+
+#map {
+    height: 300px;
+}
 </style>
