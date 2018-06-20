@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  db:
+    image: mdillon/postgis:latest
+    restart: on-failure
+    ports:
+      - "5432:5432"
+
+  nginx:
+    image: nginx:latest
+    restart: on-failure
+    volumes:
+      - ./src:/code
+      - ./volumes/media:/var/www/media
+      - ./volumes/static:/var/www/static
+      - ./config/nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./volumes/media:/var/www/media
+      - ./volumes/static:/var/www/static
+      - ./src:/code
+    environment:
+      - YELP_API_KEY=${YELP_API_KEY}
+    command: bash -c "python ./manage.py collectstatic --noinput && gunicorn poutineer.wsgi -b 0.0.0.0:8000"
