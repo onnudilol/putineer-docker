@@ -1,4 +1,4 @@
-[https://shiranai.moe:8080/#/]
+https://shiranai.moe:8080/#/
 # What is this
 A stupid idea from a [streamer](http://malf.me/) that I implemented to mess with [PostGIS](https://postgis.net/) and [Vue](https://vuejs.org/) .
 Not in any way affiliated with [poutineer.com](http://poutineer.com/).
